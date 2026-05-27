@@ -1,0 +1,43 @@
+# NOTE: The blog posts showed the key fields of each task (the {topic}
+# parameter, the output_file/create_directory/markdown options, and the
+# requirement that each task explicitly restate that it needs the previous
+# task's result). The descriptions below are reconstructed to match those
+# fragments; expected_output bodies are filled in best-effort.
+
+content_harvesting_task:
+  description: >
+    Collect recent news articles based on {topic}.  # receives parameter ;topic
+    Use the search tool to find relevant recent articles and the scrape tool
+    to verify the content. Return a list of the source URLs you found.
+  expected_output: >
+    A list of recent, relevant article URLs about {topic}, each with a one-line
+    note on why it is relevant.
+  agent: news_hunter_agent
+  markdown: true
+  # report to a md file, not the console
+  output_file: output/content_harvest.md
+  create_directory: true
+
+summarization_task:
+  description: >
+    Take each of the URLs from the previous task and generate a summary for each
+    article. Use the scrape tool to extract the full article content from the URL.
+  expected_output: >
+    A markdown section per article containing the title, source URL, and a concise
+    summary of the article's key facts.
+  agent: summarizer_agent
+  markdown: true
+  output_file: output/summaries.md
+  create_directory: true
+
+final_report_assembly_task:
+  description: >
+    Create the final, publication-ready markdown news briefing by combining all
+    previous work into a professional, cohesive report suitable for daily publication.
+  expected_output: >
+    A single, well-structured markdown briefing about {topic} that opens with a
+    short overview and then presents the curated, summarized stories.
+  agent: curator_agent
+  markdown: true
+  output_file: output/final_report.md
+  create_directory: true

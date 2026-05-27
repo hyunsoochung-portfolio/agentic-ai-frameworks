@@ -1,0 +1,7 @@
+# from-scratch-agent
+openai>=1.0.0
+
+# crewai-setup
+crewai>=0.30.0
+crewai-tools>=0.2.0
+python-dotenv>=1.0.0

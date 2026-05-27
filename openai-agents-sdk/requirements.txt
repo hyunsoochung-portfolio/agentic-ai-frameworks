@@ -1,0 +1,13 @@
+# OpenAI Agents SDK (provides the `agents` package: Agent, Runner, tools, etc.)
+openai-agents
+# Direct OpenAI client (file uploads, vector stores used by the ChatGPT clone)
+openai
+# Loads OPENAI_API_KEY from a .env file
+python-dotenv
+# Web UIs for the ChatGPT clone and customer-support agent
+streamlit
+# Structured outputs / context models
+pydantic
+# Optional: required for draw_graph() in sdk-fundamentals (agent graph viz).
+# Also needs the Graphviz system package installed.
+graphviz

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+
+# ADK runtime artifacts
+.adk/
+
+# uv / lock
+uv.lock
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

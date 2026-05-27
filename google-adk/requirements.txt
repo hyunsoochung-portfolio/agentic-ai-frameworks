@@ -1,0 +1,14 @@
+# Core Google ADK + GenAI
+google-adk>=1.11.0
+google-genai>=1.31.0
+
+# LLM routing (agents call OpenAI models via LiteLlm)
+litellm>=1.75.8
+openai>=1.0.0
+
+# Config
+python-dotenv>=1.1.1
+
+# Financial advisor
+yfinance>=0.2.65
+firecrawl-py==2.16.3

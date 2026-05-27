@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+
+# CrewAI / agent run artifacts
+db/
+*.db
+.crewai/
+
+# Generated output (keep the folders, ignore the runs)
+**/output/*
+!**/output/.gitkeep
+
+# OS
+.DS_Store

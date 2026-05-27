@@ -1,0 +1,28 @@
+# NOTE: Best-effort reconstruction (see config/agents.yaml). Each task returns a
+# `Score` (score + reason) so the Flow's score_router can decide whether to
+# finalize or regenerate the content.
+
+seo_scoring_task:
+  description: >
+    Review the following blog post about {topic} and rate its SEO quality.
+    Consider keyword relevance, headings/structure, readability, and search
+    intent.
+    <blog_post>
+    {blog_post}
+    </blog_post>
+  expected_output: >
+    A JSON object matching the `Score` schema: an integer `score` and a short
+    `reason` explaining it.
+  agent: seo_analyst_agent
+
+virality_scoring_task:
+  description: >
+    Review the following {content_type} about {topic} and rate its potential to
+    go viral. Consider the hook, emotional pull, timeliness, and shareability.
+    <content>
+    {content}
+    </content>
+  expected_output: >
+    A JSON object matching the `Score` schema: an integer `score` and a short
+    `reason` explaining it.
+  agent: virality_analyst_agent

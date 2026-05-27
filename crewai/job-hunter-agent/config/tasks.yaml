@@ -1,0 +1,86 @@
+# Reconstructed from the blog post. A few description bodies were abbreviated
+# with "..." in the original post; those ellipses are kept as-is so you can fill
+# in the remaining instructions to taste.
+
+job_extraction_task:
+  description: >
+    Find and extract {level} level {position} jobs in {location}.
+  expected_output: >
+    A JSON object matching the `JobList` schema.
+  agent: job_search_agent
+
+job_matching_task:
+  description: >
+    You are an expert in career matching.
+    Given a list of extracted jobs (JobList) and the user's resume, evaluate how
+    well each job aligns with the user's:
+    - Tech stack ...
+  expected_output: >
+    A JSON object matching the original `JobList` schema, with two additional
+    fields per job:
+    - match_score: integer from 1 to 5
+    - reason: a short explanation for the score
+  agent: job_matching_agent
+
+job_selection_task:
+  description: >
+    Given a list of jobs that each contain a `match_score` and a `reason` field
+    (RankedJobList), your task is to:
+    1. Analyze the `match_score` and reasons to determine the **best-fit job** for
+       the user. ...
+  expected_output: >
+    A JSON object matching the `ChosenJob` schema of the selected job.
+  agent: job_matching_agent
+
+resume_rewriting_task:
+  description: >
+    Given the user's real resume that is provided as included knowledge source and
+    the selected job (ChosenJob), your task is to **rewrite the existing resume**
+    so that it is optimized for the selected job.
+  expected_output: >
+    A Markdown-formatted version of the **real user's resume**, rewritten and
+    optimized for the selected job.
+    The resume must remain truthful and grounded in the user's real history.
+  agent: resume_optimization_agent
+  output_file: output/rewritten_resume.md
+  create_directory: true
+  markdown: true
+
+company_research_task:
+  description: >
+    Given the selected job (ChosenJob), research the hiring company using public
+    web resources.
+    Your goals are to:
+    1. Identify the company's size, industry, mission, values, and recent news.
+       ...
+  expected_output: >
+    A Markdown file with the following sections:
+    - ## Company Overview
+    - ## Mission and Values
+    - ## Recent News or Changes
+    - ## Role Context and Product Involvement
+    - ## Likely Interview Topics
+    - ## Suggested Questions to Ask
+  agent: company_research_agent
+  markdown: true
+  output_file: output/company_research.md
+
+interview_prep_task:
+  description: >
+    Combine the following information:
+    1. The selected job (ChosenJob)
+    2. The tailored resume (RewrittenResume)
+    3. The company research summary (CompanyResearch)
+  expected_output: >
+    A Markdown document titled "Interview Prep: $CompanyName - $JobTitle" with the
+    following sections:
+    - ## Job Overview
+    - ## Why This Job Is a Fit
+    - ## Resume Highlights for This Role
+    - ## Company Summary
+    - ## Predicted Interview Questions
+    - ## Questions to Ask Them
+    - ## Concepts To Know/Review
+    - ## Strategic Advice
+  agent: interview_prep_agent
+  output_file: output/interview_prep.md

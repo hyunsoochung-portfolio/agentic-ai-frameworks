@@ -1,0 +1,21 @@
+REPLACE THIS FILE WITH YOUR REAL RESUME.
+
+CrewAI loads files in the `knowledge/` folder as a knowledge source for the
+agents (see `TextFileKnowledgeSource(file_paths=["resume.txt"])` in main.py).
+The folder name must be exactly "knowledge".
+
+Example structure to follow:
+
+Name:
+Contact:
+Summary:
+
+Skills / Tech Stack:
+- ...
+
+Experience:
+- Company, Role, Dates
+  - ...
+
+Education:
+- ...

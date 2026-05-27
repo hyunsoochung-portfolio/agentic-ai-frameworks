@@ -1,0 +1,24 @@
+# NOTE: SeoCrew and ViralityCrew were referenced by the Flow's main.py in the
+# posts but their source (and these config files) were not shown. These are a
+# best-effort reconstruction so the pipeline is runnable end to end. The Flow
+# itself (main.py) is faithfully transcribed from the post.
+
+seo_analyst_agent:
+  role: >
+    SEO Analyst
+  goal: >
+    Evaluate a blog post about {topic} for SEO quality and assign a score with a
+    short reason.
+  backstory: >
+    You are an SEO specialist who judges content on keyword usage, structure,
+    readability, and search intent, and explains your scoring clearly.
+
+virality_analyst_agent:
+  role: >
+    Social Virality Analyst
+  goal: >
+    Evaluate a {content_type} about {topic} for its potential to go viral and
+    assign a score with a short reason.
+  backstory: >
+    You study what makes social content spread - hooks, emotion, timeliness, and
+    shareability - and score posts accordingly.

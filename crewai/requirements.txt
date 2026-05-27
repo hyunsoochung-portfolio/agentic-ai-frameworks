@@ -1,0 +1,12 @@
+# Inferred from the imports used across the three projects.
+crewai
+crewai-tools
+python-dotenv
+pydantic
+
+# news-reader-agent: web search + Playwright/BeautifulSoup scraping
+playwright
+beautifulsoup4
+
+# job-hunter-agent & content-pipeline-agent: Firecrawl web search
+firecrawl-py
